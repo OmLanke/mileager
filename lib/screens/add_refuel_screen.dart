@@ -58,13 +58,13 @@ class _AddRefuelScreenState extends State<AddRefuelScreen> {
       builder: (context, child) {
         return Theme(
           data: Theme.of(context).copyWith(
-            dialogBackgroundColor: AppColors.surface,
             colorScheme: const ColorScheme.light(
               primary: AppColors.primary,
               onPrimary: Colors.white,
               surface: AppColors.surface,
               onSurface: AppColors.textPrimary,
             ),
+            dialogTheme: DialogThemeData(backgroundColor: AppColors.surface),
           ),
           child: child!,
         );
