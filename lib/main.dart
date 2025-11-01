@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'models/refuel_entry.dart';
@@ -13,6 +14,12 @@ import 'core/sample_data_seeder.dart';
 /// Initializes Hive database and launches the app
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  
+  // Configure web renderer for better performance on web
+  if (kIsWeb) {
+    // CanvasKit is automatically used on web in Flutter 3.10+
+    // No additional configuration needed
+  }
 
   // Initialize Hive for local storage
   await Hive.initFlutter();
