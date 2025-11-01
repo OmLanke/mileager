@@ -1,19 +1,12 @@
 {
-    "version": 2,
     "buildCommand": "flutter build web --release",
     "outputDirectory": "build/web",
     "installCommand": "if ! command -v flutter &> /dev/null; then git clone https://github.com/flutter/flutter.git -b stable --depth 1 && export PATH=\"$PATH:`pwd`/flutter/bin\" && flutter doctor && flutter pub get; else flutter pub get; fi",
     "framework": null,
-    "routes": [
+    "rewrites": [
         {
-            "src": "/flutter_service_worker.js",
-            "headers": {
-                "cache-control": "no-cache"
-            }
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/index.html"
+            "source": "/(.*)",
+            "destination": "/index.html"
         }
     ],
     "headers": [
@@ -27,7 +20,7 @@
             ]
         },
         {
-            "source": "/(.*).wasm",
+            "source": "/(.*)\\.wasm",
             "headers": [
                 {
                     "key": "Content-Type",
@@ -45,7 +38,7 @@
             ]
         },
         {
-            "source": "/(.*).js",
+            "source": "/(.*)\\.js",
             "headers": [
                 {
                     "key": "Cache-Control",
